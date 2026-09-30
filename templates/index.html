@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Intelligence System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fa-solid fa-brain"></i> Knowledge AI</h2>
+            </div>
+            
+            <div class="upload-section">
+                <div class="upload-area" id="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Drag & drop or click to upload</p>
+                    <span class="file-types">.pdf, .docx, .txt</span>
+                    <input type="file" id="file-input" accept=".pdf,.docx,.txt" multiple hidden>
+                </div>
+                <div id="upload-progress" class="progress-bar-container hidden">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <span class="stat-label">Documents</span>
+                    <span class="stat-value" id="doc-count">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Vectors</span>
+                    <span class="stat-value" id="vector-count">0</span>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <h3>Uploaded Documents</h3>
+                <ul id="document-list" class="document-list">
+                    <!-- Documents will be populated here -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main id="chat-container">
+            <header class="chat-header">
+                <button id="mobile-menu-btn" class="mobile-only"><i class="fa-solid fa-bars"></i></button>
+                <h1>Assistant</h1>
+                <button id="reset-btn" class="action-btn" title="Reset Conversation"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+            </header>
+
+            <div id="messages-container">
+                <div class="message assistant welcome">
+                    <div class="message-avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I am your Knowledge Intelligence Assistant. Upload some documents and ask me questions about them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="typing-indicator" class="typing-indicator hidden">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea id="chat-input" placeholder="Ask a question about your documents..." rows="1"></textarea>
+                    <button id="send-btn" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <div id="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
